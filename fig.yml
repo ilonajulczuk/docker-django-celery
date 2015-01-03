@@ -3,24 +3,26 @@ db:
 redis:
   image: redis:2.8.19
 rabbitmq:
-  image: rabbitmq:3.4.2-management
+  image: tutum/rabbitmq
+  environment:
+    - RABBITMQ_PASS=mypass
 web:
   build: .
-  command: python manage.py runserver 0.0.0.0:8000
+  command: python myproject/manage.py runserver 0.0.0.0:8000
   volumes:
     - .:/app
   ports:
     - "8000:8000"
   links:
-    - db
-    - rabbitmq
-    - redis
+    - db:db
+    - rabbitmq:rabbitmq
+    - redis:redis
 worker:
   build: .
   command: printenv
   volumes:
     - .:/app
   links:
-    - db
-    - rabbitmq
-    - redis
+    - db:db
+    - rabbitmq:rabbitmq
+    - redis:redis
