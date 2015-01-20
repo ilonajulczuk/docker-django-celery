@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
-from .models import Job
 from rest_framework import serializers
+
+from .models import Job
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

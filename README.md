@@ -1,7 +1,5 @@
-## TODO:
+## Configure django with celery and run everything in containers
 
-- configure postgres db in django
-- configure redis and rabbitmq in django
-- configure celery in django project
-- create a simple api (cats are always a good use case)
-- create some celery tasks and make sure that they execute correctly
+This projects shows an example of configuration django with celery.
+
+Everything runs inside Docker containers.

@@ -1,8 +1,9 @@
 from __future__ import absolute_import
 
+from functools import wraps
+
 from myproject.celeryconf import app
 from .models import Job
-from functools import wraps
 
 
 def update_job(fn):
@@ -27,6 +28,7 @@ def update_job(fn):
 def power(n):
     """Return 2 to the n'th power"""
     return 2 ** n
+
 
 @app.task
 @update_job
