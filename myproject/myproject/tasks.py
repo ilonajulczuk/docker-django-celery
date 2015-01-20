@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from functools import wraps
 
 from myproject.celeryconf import app
@@ -18,6 +16,7 @@ def update_job(fn):
             job.status = 'finished'
             job.save()
         except:
+            job.result = None
             job.status = 'failed'
             job.save()
     return wrapper
